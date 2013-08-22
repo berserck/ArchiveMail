@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>247.1</string>
+	<key>AMApplicationVersion</key>
+	<string>2.1.1</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>-- Archive.scp: script to archive email selected messages-- Coded by: Pedro Parracho January 7, 2013-- Additional functions-- Split string -- from : http://geert.vanderkelen.org/splitting-as-string-and-joining-a-list-using-applescript/to splitString(aString, delimiter)	set retVal to {}	set prevDelimiter to AppleScript's text item delimiters	log delimiter	set AppleScript's text item delimiters to {delimiter}	set retVal to every text item of aString	set AppleScript's text item delimiters to prevDelimiter	return retValend splitString-- Check if account is gmail or noton isGmail(myServer)	word 1 of myServer	set tmp to my splitString(myServer, ".")	-- tmpend isGmail-- Main functiontell application "Mail"	-- get all messages selected in the mail window	set theMessages to the selected messages of message viewer 0	-- loop over the messages	repeat with aMessage in theMessages		aMessage		-- get the message account, first the mailbox		set myMailbox to mailbox of aMessage		myMailbox		-- then the account of the mailbox		set myAccount to account of myMailbox		-- myAccount		-- finally the server attached to the account		set myServer to server name of myAccount		-- myServer				set myAccountName to item 2 of isGmail(myServer) of me		myAccountName				if myAccountName is equal to "gmail" then			set destMailbox to "[Gmail]/All Mail"			-- display dialog "Moving email to destination folder: \"" &amp; destMailbox &amp; "\" of account " &amp; name of myAccount			-- here I just want to move the message to all mail			-- set destMailbox to "[GMAIL]/All Mail"		else			set myDate to date sent of aMessage			myDate			set destMailbox to "Archives/" &amp; year of myDate			-- set r to display dialog "is something else (" &amp; myAccountName &amp; ") destination folder: \"" &amp; destMailbox &amp; "\""			-- try		end if		tell application "Mail"			-- fix error handling			-- display dialog "Moving email to destination folder: \"" &amp; destMailbox &amp; "\" of account " &amp; name of myAccount			move the aMessage to mailbox destMailbox of myAccount			--on error 		end tell		-- end try	end repeatend tell</string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>F0BA3B34-76F4-4808-B6E2-DF4486B15FEC</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>7A208C52-7CF0-4E61-B3F6-C7C490068316</string>
+				<key>UUID</key>
+				<string>A6606916-6B5E-4E2F-93F8-A3F8BD1CD138</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>428.500000:733.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/English.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict/>
+	<key>state</key>
+	<dict>
+		<key>AMLogTabViewSelectedIndex</key>
+		<integer>1</integer>
+		<key>libraryState</key>
+		<dict>
+			<key>actionsMajorSplitViewState</key>
+			<dict>
+				<key>expandedPosition</key>
+				<real>242</real>
+				<key>subviewState</key>
+				<array>
+					<string>0.000000, 0.000000, 381.000000, 692.000000, NO</string>
+					<string>0.000000, 693.000000, 381.000000, 241.000000, NO</string>
+				</array>
+			</dict>
+			<key>actionsMinorSplitViewState</key>
+			<dict>
+				<key>expandedPosition</key>
+				<real>0.0</real>
+				<key>subviewState</key>
+				<array>
+					<string>0.000000, 0.000000, 163.000000, 692.000000, NO</string>
+					<string>164.000000, 0.000000, 217.000000, 692.000000, NO</string>
+				</array>
+			</dict>
+			<key>variablesMajorSplitViewState</key>
+			<dict>
+				<key>expandedPosition</key>
+				<real>0.0</real>
+				<key>subviewState</key>
+				<array>
+					<string>0.000000, 0.000000, 381.000000, 555.000000, NO</string>
+					<string>0.000000, 556.000000, 381.000000, 196.000000, NO</string>
+				</array>
+			</dict>
+			<key>variablesMinorSplitViewState</key>
+			<dict>
+				<key>expandedPosition</key>
+				<real>0.0</real>
+				<key>subviewState</key>
+				<array>
+					<string>0.000000, 0.000000, 163.000000, 555.000000, NO</string>
+					<string>164.000000, 0.000000, 217.000000, 555.000000, NO</string>
+				</array>
+			</dict>
+		</dict>
+		<key>majorSplitViewState</key>
+		<dict>
+			<key>expandedPosition</key>
+			<real>0.0</real>
+			<key>subviewState</key>
+			<array>
+				<string>0.000000, 0.000000, 381.000000, 979.000000, NO</string>
+				<string>382.000000, 0.000000, 857.000000, 979.000000, NO</string>
+			</array>
+		</dict>
+		<key>minorSplitViewState</key>
+		<dict>
+			<key>expandedPosition</key>
+			<real>0.0</real>
+			<key>subviewState</key>
+			<array>
+				<string>0.000000, 0.000000, 857.000000, 788.000000, NO</string>
+				<string>0.000000, 798.000000, 857.000000, 162.000000, NO</string>
+			</array>
+		</dict>
+		<key>windowFrame</key>
+		<string>{{601, 56}, {1238, 1056}}</string>
+		<key>workflowViewScrollPosition</key>
+		<string>{{0, 0}, {857, 788}}</string>
+	</dict>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>serviceApplicationBundleID</key>
+		<string>com.apple.mail</string>
+		<key>serviceApplicationPath</key>
+		<string>/Applications/Mail.app</string>
+		<key>serviceInputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>serviceOutputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.servicesMenu</string>
+	</dict>
+</dict>
+</plist>
