@@ -1,4 +1,4 @@
-#ArchiveMail 0.1
+# ArchiveMail 0.1
 by Pedro Parracho <pedro.parracho@gmail.com>
 
 
@@ -21,7 +21,7 @@ To add the shortcut you need to do:
 1. Search for the Service, it should be in "General"->"Archive"
 1. Add the desired shortcut, I suggest "^A"
 
-##Feature
+## Feature
 
 The workflow will not create the destination mailbox if it does not exist, it will fail. The mailbox needs to be created by hand.
 
@@ -30,4 +30,4 @@ I meant to create a handling of exception to do this, but at the moment it seems
 
 ## License
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
+Released under MIT License
